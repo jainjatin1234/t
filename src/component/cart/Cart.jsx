@@ -7,7 +7,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cartItems } = useSelector((state) => state.cart);
-  // const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   console.log(cartItems);
 
   const decreseQuantity = (id, quantity) => {
@@ -30,6 +30,15 @@ const Cart = () => {
   const removeCardHandler = (id) => {
     dispatch(removeCartItems(id))
 
+  }
+
+  const checkOutHandler = () => {
+    // alert('hello')
+    if(isAuthenticated){
+      navigate('/shipping')
+    }else{
+      navigate('/login')
+    }
   }
 
 
@@ -128,7 +137,7 @@ const Cart = () => {
                     0
                   )}`}</h6>
                 </div>
-                <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" >Proceed To Checkout</button>
+                <button class="btn btn-block btn-primary font-weight-bold my-3 py-3" onClick={checkOutHandler} >Proceed To Checkout</button>
               </div>
             </div>
           </div>

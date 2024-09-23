@@ -34,9 +34,14 @@ import {
             case REMOVE_CART_ITEM:
                 return{
                     ...state,
-                    cartItems : state.cartItems.filter((i) => i.product != action.payload)
-                }
+                    cartItems : state.cartItems.filter((i) => i.product != action.payload),
+                };
   
+                case SAVE_SHIPPING_INFO:
+                    return {
+                        ...state,
+                        shippingInfo: action.payload,
+                    };
 
         default:
             return state;
